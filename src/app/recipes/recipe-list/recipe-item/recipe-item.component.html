@@ -1,1 +1,12 @@
-<p>recipe-item works!</p>
+<a
+    class="list-group-item list-group-item-action"
+    style="cursor: pointer"
+    (click)="onSelected()"
+>
+    <h5 class="fw-bolder">
+        {{recipe?.name}}
+    </h5>
+    <p class="fw-light">
+        {{recipe?.description}}
+    </p>
+</a>

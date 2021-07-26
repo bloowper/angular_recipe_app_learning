@@ -5,23 +5,9 @@
 </div>
 <div class="row">
     <div class="col-12">
-        <div class="list-group">
-            <div *ngFor="let recipe of recipes"  class="list-group-item list-group-item-action">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <h5 class="fw-bolder">
-                            {{recipe.name}}
-                        </h5>
-                        <p class="fw-light">
-                            {{recipe.description}}
-                        </p>
-                    </div>
-                    <div class="col-lg-6">
-                        <img class="card-img-top img-fit" [src]="recipe.imagePath" alt="{{recipe.name}}">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <app-recipe-item></app-recipe-item>
+        <app-recipe-item
+            *ngFor="let recipeElement of recipes" [recipe]="recipeElement"
+            (recipeSelected)="onRecipeSelected(recipeElement)"
+        ></app-recipe-item>
     </div>
 </div>
