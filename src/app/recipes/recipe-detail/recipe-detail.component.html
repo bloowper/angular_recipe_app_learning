@@ -9,12 +9,12 @@
         <h4 class="fw-bold" >{{recipe?.name}}</h4>
     </div>
 </div>
-
+<!--appDropdownv2-->
 <div class="row">
 	<div class="col-sm-12">
-        <div class="btn-group"  >
+        <div class="btn-group" appDropdown #r="appDropdown">
             <button type="button" class="btn btn-outline-primary dropdown-toggle">Manage recipe</button>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu" [ngClass]="{'show' :r.isOpen}">
                 <li><a class="dropdown-item" href="#">To shopping list</a></li>
                 <li><a class="dropdown-item" href="#">Edit recipe</a></li>
                 <li><a class="dropdown-item" href="#">Delete recipe</a></li>

@@ -10,6 +10,8 @@ import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-it
 import { ShoppingListComponent } from './shooping-list/shopping-list.component';
 import { ShoopingEditComponent } from './shooping-list/shooping-edit/shooping-edit.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {DropdownDirective} from "./shared/dropdown.directive";
+import { Dropdownv2Directive } from './shared/dropdownv2.directive';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RecipeDetailComponent,
     RecipeItemComponent,
     ShoppingListComponent,
-    ShoopingEditComponent
+    ShoopingEditComponent,
+    DropdownDirective,
+    Dropdownv2Directive
   ],
   imports: [
     BrowserModule,
