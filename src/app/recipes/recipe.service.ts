@@ -37,7 +37,7 @@ export class RecipeService {
     get recipes(): Recipe[] {
         return this._recipes.slice();
     }
-
+    //
 
     addIngredientsToShoppingList(ingredients: Ingredient[] | undefined) {
         if (ingredients !== undefined) {
