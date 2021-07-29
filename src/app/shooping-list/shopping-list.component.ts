@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Ingredient} from "../shared/ingredient.model";
 import {buildMonths} from "@ng-bootstrap/ng-bootstrap/datepicker/datepicker-tools";
+import {ShooppingListService} from "./shoopping-list.service";
 
 @Component({
     selector: 'app-shooping-list',
@@ -9,18 +10,16 @@ import {buildMonths} from "@ng-bootstrap/ng-bootstrap/datepicker/datepicker-tool
 })
 export class ShoppingListComponent implements OnInit {
 
-    ingredients: Ingredient[] = [
-        new Ingredient("Apple", 5),
-        new Ingredient("Tomatoes", 10),
-    ];
+    ingredients: Ingredient[] | undefined;
 
-    constructor() {
+    constructor(private shooping: ShooppingListService) {
+
     }
 
     ngOnInit(): void {
     }
 
     onIngredientAdded(ingredient: Ingredient) {
-        this.ingredients.push(ingredient);
+        this.ingredients?.push(ingredient);
     }
 }
