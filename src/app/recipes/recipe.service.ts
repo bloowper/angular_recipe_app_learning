@@ -7,7 +7,6 @@ import {ShoppingListService} from "../shooping-list/shopping-list.service";
     providedIn: 'root'
 })
 export class RecipeService {
-    public recipeSelected = new EventEmitter<Recipe>();
 
 
     constructor(private shoppingListService:ShoppingListService) {
