@@ -1,8 +1,8 @@
 <a
     class="list-group-item list-group-item-action"
+    routerLinkActive="active"
     style="cursor: pointer"
-    (click)="onSelected()"
->
+    [routerLink]="[index]">
     <h5 class="fw-bolder">
         {{recipe?.name}}
     </h5>
