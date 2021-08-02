@@ -9,6 +9,7 @@ export class HeaderComponent implements OnInit {
     collapsed = true;
 
     constructor() {
+
     }
 
     ngOnInit(): void {
