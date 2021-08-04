@@ -67,19 +67,26 @@
             <div class="row">
                 <div class="col-12 mt-3" formArrayName="ingredients">
                     <div
-                            *ngFor="let ingredientCtrl of controls"
+                            *ngFor="let ingredientCtrl of controls; let i = index; let isLast = last"
                             class="row mt-3"
-                            formGroupName=""
+                            [formGroupName]="i"
+                            [ngClass]=" isLast? 'mb-3' : ''"
                     >
                         <div class="col-sm-8">
-                            <input type="text" class="form-control">
+                            <input formControlName="name" type="text" class="form-control">
                         </div>
                         <div class="col-sm-2">
-                            <input type="text" class="form-control">
+                            <input  formControlName="amount" type="text" class="form-control">
                         </div>
                         <div class="col-sm-2">
-                            <button class="btn btn-danger">X</button>
+                            <button type="button" class="btn btn-danger">X</button>
                         </div>
+                    </div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button (click)="onAddIngredient()" class="btn btn-success">Add Ingredient</button>
                     </div>
                 </div>
             </div>
