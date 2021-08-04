@@ -1,6 +1,7 @@
 import {Injectable,EventEmitter} from "@angular/core";
 import {Ingredient} from "../shared/ingredient.model";
 import {Subject} from "rxjs"
+import {resetTempProgramHandlerForTest} from "@angular/compiler-cli/src/transformers/program";
 
 @Injectable({
     providedIn: 'root'
@@ -37,5 +38,10 @@ export class ShoppingListService {
             this._ingredients[index] = ingredient;
             this.ingredientsChanged.next(this._ingredients);
         }
+    }
+
+    deleteIngredient(index: number) {
+        this.ingredients.splice(index, 1);
+        this.ingredientsChanged.next(this.ingredients.slice());
     }
 }

@@ -57,6 +57,9 @@ export class ShoopingEditComponent implements OnInit, OnDestroy {
     }
 
     onDelete() {
-
+        if (this.eidItemIndex !== undefined) {
+            this.shoppingListService.deleteIngredient(this.eidItemIndex);
+            this.onClear();
+        }
     }
 }
