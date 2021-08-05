@@ -2,17 +2,19 @@ import {Recipe} from "./recipe-list/recipe.model";
 import {EventEmitter, Injectable} from "@angular/core";
 import {Ingredient} from "../shared/ingredient.model";
 import {ShoppingListService} from "../shooping-list/shopping-list.service";
+import {Subject} from "rxjs";
 
 @Injectable({
     providedIn: 'root'
 })
 export class RecipeService {
 
+    recipesChanged$ = new Subject<Recipe[]>();
 
     constructor(private shoppingListService:ShoppingListService) {
     }
 
-    private _recipes: Recipe[] = [
+    private recipes: Recipe[] = [
         new Recipe(
             "Tasty burger",
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ante nibh, accumsan ac dignissim ",
@@ -26,16 +28,15 @@ export class RecipeService {
             "Salade",
             "Lorem ipsum dolor ipsum sit ipsum amet, consectetur adipiscing  consectetur elit. Morbi ante nibh  consectetur, accumsan ac dignissim ",
             "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2015/11/shakshuka-11.jpg",
-            [new Ingredient("Tomatoes", 10),
+            [
+                new Ingredient("Tomatoes", 10),
                 new Ingredient("Paprika", 2),
                 new Ingredient("Bread", 1)
             ]
         )
     ];
 
-    get recipes(): Recipe[] {
-        return this._recipes.slice();
-    }
+
     //
 
     addIngredientsToShoppingList(ingredients: Ingredient[] | undefined) {
@@ -44,7 +45,20 @@ export class RecipeService {
         }
     }
 
+    getRecipes() {
+        return this.recipes.slice();
+    }
     getRecipe(index: number) {
         return this.recipes[index];
+    }
+
+    addRecipe(recipe: Recipe) {
+        this.recipes.push(recipe);
+        this.recipesChanged$.next(this.recipes.slice());
+    }
+
+    updateRecipe(recipe: Recipe, index: number) {
+        this.recipes[index] = recipe;
+        this.recipesChanged$.next(this.recipes.slice());
     }
 }
