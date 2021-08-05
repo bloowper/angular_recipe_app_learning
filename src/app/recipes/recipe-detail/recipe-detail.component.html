@@ -6,7 +6,7 @@
 </div>
 <div class="row">
     <div class="col-sm-12">
-        <h4 class="fw-bold" >{{recipe?.name}}</h4>
+        <h4 class="fw-bold mt-3 mb-3" >{{recipe?.name}}</h4>
     </div>
 </div>
 <!--appDropdownv2-->
@@ -17,7 +17,7 @@
             <ul class="dropdown-menu" >
                 <li><a (click)="onAddToShoppingList()" class="dropdown-item" style="cursor: pointer">To shopping list</a></li>
                 <li><a class="dropdown-item" routerLink="edit">Edit recipe</a></li>
-                <li><a class="dropdown-item" routerLink="delete">Delete recipe</a></li>
+                <li><a class="dropdown-item" (click)="onDeleteRecipe()">Delete recipe</a></li>
             </ul>
         </div>
     </div>
