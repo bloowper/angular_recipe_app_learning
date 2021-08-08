@@ -10,6 +10,7 @@ import {AuthService} from "../services/auth.service";
 export class AuthComponentComponent implements OnInit {
 
     isLoginMode = true;
+    isLoading = false;
 
     constructor(private authService: AuthService) {
     }
@@ -27,6 +28,7 @@ export class AuthComponentComponent implements OnInit {
         }
         let email = form.value.email;
         let password = form.value.password;
+        this.isLoading = true;
 
         if (this.isLoginMode) {
             //..
@@ -35,14 +37,15 @@ export class AuthComponentComponent implements OnInit {
                 value => {
                     console.log("Sign up success")
                     console.log(value);
+                    this.isLoading = false;
                 },
                 error => {
                     console.log("Sign up fail")
                     console.log(error);
+                    this.isLoading = false;
                 }
             );
         }
-
         form.reset();
     }
 }
