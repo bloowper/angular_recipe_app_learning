@@ -49,7 +49,7 @@ import { AuthComponentComponent } from './auth/auth-component/auth-component.com
 
     ],
     providers: [ShoppingListService,RecipeService],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
 })
 export class AppModule {
 }
