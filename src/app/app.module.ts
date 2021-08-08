@@ -20,6 +20,7 @@ import {ShoppingListService} from "./shooping-list/shopping-list.service";
 import {RecipeService} from "./recipes/recipe.service";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { AuthComponentComponent } from './auth/auth-component/auth-component.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
     declarations: [
@@ -35,7 +36,8 @@ import { AuthComponentComponent } from './auth/auth-component/auth-component.com
         Dropdownv2Directive,
         RecipeStartComponent,
         RecipeEditComponent,
-        AuthComponentComponent
+        AuthComponentComponent,
+        LoadingSpinnerComponent
     ],
     imports: [
         BrowserModule,
