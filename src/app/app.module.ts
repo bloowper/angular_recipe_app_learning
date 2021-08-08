@@ -19,6 +19,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ShoppingListService} from "./shooping-list/shopping-list.service";
 import {RecipeService} from "./recipes/recipe.service";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { AuthComponentComponent } from './auth/auth-component/auth-component.component';
 
 @NgModule({
     declarations: [
@@ -33,7 +34,8 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
         DropdownDirective,
         Dropdownv2Directive,
         RecipeStartComponent,
-        RecipeEditComponent
+        RecipeEditComponent,
+        AuthComponentComponent
     ],
     imports: [
         BrowserModule,
