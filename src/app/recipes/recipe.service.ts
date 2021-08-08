@@ -14,28 +14,29 @@ export class RecipeService {
     constructor(private shoppingListService:ShoppingListService) {
     }
 
-    private recipes: Recipe[] = [
-        new Recipe(
-            "Tasty burger",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ante nibh, accumsan ac dignissim ",
-            "https://images.wallpaperscraft.com/image/pie_baking_recipe_173786_1600x900.jpg",
-            [new Ingredient("Met", 1),
-                new Ingredient("French Fries", 20)
-            ]
-        ),
+    // private recipes: Recipe[] = [
+    //     new Recipe(
+    //         "Tasty burger",
+    //         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ante nibh, accumsan ac dignissim ",
+    //         "https://images.wallpaperscraft.com/image/pie_baking_recipe_173786_1600x900.jpg",
+    //         [new Ingredient("Met", 1),
+    //             new Ingredient("French Fries", 20)
+    //         ]
+    //     ),
+    //
+    //     new Recipe(
+    //         "Salade",
+    //         "Lorem ipsum dolor ipsum sit ipsum amet, consectetur adipiscing  consectetur elit. Morbi ante nibh  consectetur, accumsan ac dignissim ",
+    //         "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2015/11/shakshuka-11.jpg",
+    //         [
+    //             new Ingredient("Tomatoes", 10),
+    //             new Ingredient("Paprika", 2),
+    //             new Ingredient("Bread", 1)
+    //         ]
+    //     )
+    // ];
 
-        new Recipe(
-            "Salade",
-            "Lorem ipsum dolor ipsum sit ipsum amet, consectetur adipiscing  consectetur elit. Morbi ante nibh  consectetur, accumsan ac dignissim ",
-            "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2015/11/shakshuka-11.jpg",
-            [
-                new Ingredient("Tomatoes", 10),
-                new Ingredient("Paprika", 2),
-                new Ingredient("Bread", 1)
-            ]
-        )
-    ];
-
+    private recipes: Recipe[] = [];
 
     //
 
