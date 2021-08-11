@@ -38,6 +38,7 @@ export class AuthService{
                 returnSecureToken: true
             }
         ).
+
         pipe(
             catchError(this.handleError),
             tap(x => {
@@ -60,12 +61,14 @@ export class AuthService{
                 this.handleAuthentication(x.email, x.localId, x.idToken, +x.expiresIn);
             })
         );
+
     }
 
     private handleAuthentication(email: string, userId: string, token: string, expirationTime: number) {
         const expirationDate = new Date(new Date().getTime()+ expirationTime*1000)
         const user = new User(email, userId, token, expirationDate);
         this.user$.next(user);
+        console.log("HANDLE AUTHENTICATION")
     }
 
     private handleError(errorResponse: HttpErrorResponse) {
