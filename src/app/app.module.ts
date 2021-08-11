@@ -18,8 +18,9 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ShoppingListService} from "./shooping-list/shopping-list.service";
 import {RecipeService} from "./recipes/recipe.service";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import { AuthComponentComponent } from './auth/auth-component/auth-component.component';
+import {InterceptorService} from "./auth/services/interceptor.service";
 
 
 
@@ -48,7 +49,11 @@ import { AuthComponentComponent } from './auth/auth-component/auth-component.com
         HttpClientModule,
 
     ],
-    providers: [ShoppingListService,RecipeService],
+    providers: [
+        ShoppingListService,
+        RecipeService,
+        {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {

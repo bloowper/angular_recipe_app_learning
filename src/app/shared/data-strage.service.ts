@@ -28,7 +28,7 @@ export  class  DataStorageService{
         return this.authService.user$.pipe
         (
             take(1),
-            exhaustMap(user => {
+            exhaustMap(user =>{
                 return this.httpClient.get<Recipe[]>(
                     "https://recipe-app-test-ae9dd-default-rtdb.firebaseio.com/recipes.json",
                     {
@@ -37,16 +37,13 @@ export  class  DataStorageService{
                 )
             }),
             map(recipes =>{
-                    console.log("Map :",recipes);
-                    var map1 =  recipes.map(
-                        recipe=>{
-                            return {...recipe, ingredients: recipe.ingredients?  recipe.ingredients:[]}
-                        }
-                    )
-                    this.recipeService.setRecipes(map1);
-                    return map1;
+                return recipes.map(recipe =>{
+                    return {...recipe, ingredients: recipe.ingredients ? recipe.ingredients : []}
+                })
             }),
-            tap(recipes =>{this.recipeService.setRecipes(recipes);})
+            tap(recipes =>{
+                this.recipeService.setRecipes(recipes);
+            })
         )
     }
 }
