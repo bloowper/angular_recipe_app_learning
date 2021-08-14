@@ -25,25 +25,45 @@ export  class  DataStorageService{
     }
 
     fetchRecipes() {
-        return this.authService.user$.pipe
-        (
-            take(1),
-            exhaustMap(user =>{
-                return this.httpClient.get<Recipe[]>(
-                    "https://recipe-app-test-ae9dd-default-rtdb.firebaseio.com/recipes.json",
-                    {
-                        params: new HttpParams().set('auth', user.token ? user.token : '')
-                    }
-                )
-            }),
-            map(recipes =>{
-                return recipes.map(recipe =>{
-                    return {...recipe, ingredients: recipe.ingredients ? recipe.ingredients : []}
-                })
-            }),
-            tap(recipes =>{
-                this.recipeService.setRecipes(recipes);
-            })
+
+        // return this.authService.user$.pipe
+        // (
+        //     take(1),
+        //     exhaustMap(user =>{
+        //         return this.httpClient.get<Recipe[]>(
+        //             "https://recipe-app-test-ae9dd-default-rtdb.firebaseio.com/recipes.json",
+        //             {
+        //                 params: new HttpParams().set('auth', user.token ? user.token : '')
+        //             }
+        //         )
+        //     }),
+        //     map(recipes =>{
+        //         return recipes.map(recipe =>{
+        //             return {...recipe, ingredients: recipe.ingredients ? recipe.ingredients : []}
+        //         })
+        //     }),
+        //     tap(recipes =>{
+        //         this.recipeService.setRecipes(recipes);
+        //     })
+        // )
+
+        //interceptor in use
+        return this.httpClient.get<Recipe[]>(
+            "https://recipe-app-test-ae9dd-default-rtdb.firebaseio.com/recipes.json"
         )
+            .pipe(
+                map(recipes =>{
+                    return recipes.map(recipe=>{
+                        return{
+                            ...recipe,
+                            ingredients: recipe.ingredients ? recipe.ingredients : []
+                        }
+                    })
+                }),
+                tap(recipes =>{
+                    this.recipeService.setRecipes(recipes);
+                })
+            )
+
     }
 }

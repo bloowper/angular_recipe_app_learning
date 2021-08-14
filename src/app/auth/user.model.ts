@@ -17,6 +17,10 @@ export class User {
         }
         return this._token;
     }
+
+    public isTokenNotExpired() {
+        return new Date() < this._tokenExpirationDate;
+    }
 }
 
 
