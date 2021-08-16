@@ -21,6 +21,8 @@ import {RecipeService} from "./recipes/recipe.service";
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import { AuthComponentComponent } from './auth/auth-component/auth-component.component';
 import {InterceptorService} from "./auth/services/interceptor.service";
+import { AlertComponent } from './shared/alert/alert.component';
+import {PlaceholderDirective} from "./shared/placeholder/placeholder.directive";
 
 
 
@@ -39,6 +41,8 @@ import {InterceptorService} from "./auth/services/interceptor.service";
         RecipeStartComponent,
         RecipeEditComponent,
         AuthComponentComponent,
+        AlertComponent,
+        PlaceholderDirective
     ],
     imports: [
         BrowserModule,
@@ -55,6 +59,7 @@ import {InterceptorService} from "./auth/services/interceptor.service";
         {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}
     ],
     bootstrap: [AppComponent],
+
 })
 export class AppModule {
 }
